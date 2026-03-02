@@ -1,1 +1,42 @@
+import java.util.Random;
+
+public class HashProject {
+
+    public static void main(String[] args) {
+
+        int N = 1 << 20;   // 2^20 = 1,048,576
+        int USE = 950000;  // number to use for experiment
+
+        int[] numbers = new int[N];
+
+        // Step 1: Fill with 1..N
+        for (int i = 0; i < N; i++) {
+            numbers[i] = i + 1;
+        }
+
+        // Step 2: Shuffle (Fisher-Yates)
+        Random rand = new Random();
+        for (int i = N - 1; i > 0; i--) {
+            int j = rand.nextInt(i + 1);
+
+            int temp = numbers[i];
+            numbers[i] = numbers[j];
+            numbers[j] = temp;
+        }
+
+        // Step 3: Create key-value arrays
+        String[] keys = new String[USE];
+        String[] values = new String[USE];
+
+        for (int i = 0; i < USE; i++) {
+            keys[i] = String.valueOf(numbers[i]);  // shuffled key
+            values[i] = String.valueOf(i + 1);     // position as value
+        }
+
+        System.out.println("Setup complete.");
+        System.out.println("Total generated: " + N);
+        System.out.println("Used for experiment: " + USE);
+    }
+}
+
 
