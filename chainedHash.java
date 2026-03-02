@@ -76,3 +76,29 @@ ublic class chainedHash {
 
         return null;
     }
+ prev = current;
+            current = current.next;
+        }
+
+        // Key not found → add at end
+        prev.next = new Node(key, value);
+        size++;
+    }
+
+    // Lookup
+    public String lookup(String key) {
+
+        int i = hash(key);
+
+        Node current = table[i];
+
+        while (current != null) {
+
+            if (current.key.equals(key))
+                return current.value;
+
+            current = current.next;
+        }
+
+        return null;
+    }
