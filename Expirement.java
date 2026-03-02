@@ -59,4 +59,19 @@ public int hash(String key) {
             if (i == start)
                 break;
         }
+public String lookup(String key) {
+
+        int i = hash(key);
+        int start = i;
+
+        while (keys[i] != null) {
+
+            if (keys[i].equals(key))
+                return values[i];
+
+            i = (i + 1) % m;
+
+            if (i == start)
+                break;
+        }
 
