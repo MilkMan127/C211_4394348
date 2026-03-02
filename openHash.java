@@ -62,4 +62,29 @@ public class openHash {
 
         return null;
     }
+ public String remove(String key) {
+
+        int i = hash(key);
+        int start = i;
+
+        while (keys[i] != null) {
+
+            if (keys[i].equals(key)) {
+                String val = values[i];
+
+                keys[i] = "DELETED";  // mark as deleted
+                values[i] = null;
+                size--;
+
+                return val;
+            }
+
+            i = (i + 1) % m;
+
+            if (i == start)
+                break;
+        }
+
+        return null;
+    }
 
