@@ -87,4 +87,20 @@ public class openHash {
 
         return null;
     }
+     public boolean isInTable(String key) {
+        return lookup(key) != null;
+    }
+
+    public boolean isFull() {
+        return size == m;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public int getSize() {
+        return size;
+    }
+}
 
