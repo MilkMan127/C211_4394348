@@ -59,19 +59,21 @@ public int hash(String key) {
             if (i == start)
                 break;
         }
-public String lookup(String key) {
+    return null;
+    }
+    public String remove(String key) {
 
         int i = hash(key);
         int start = i;
 
         while (keys[i] != null) {
 
-            if (keys[i].equals(key))
-                return values[i];
+            if (keys[i].equals(key)) {
+                String val = values[i];
 
-            i = (i + 1) % m;
+                keys[i] = "DELETED";  // mark as deleted
+                values[i] = null;
+                size--;
 
-            if (i == start)
-                break;
-        }
-
+                return val;
+            }
